@@ -12,4 +12,15 @@ struct Book: Identifiable, Codable {
   let kind: String?
   let selfLink: String?
   let volumeInfo: Volume?
+  let etag: String?
+//  let accessInfo
+//  let searchInfo
+//  let saleInfo
+}
+
+
+struct BooksResponse: Codable {
+  let items: [Book]
+  let totalItems: Int?
+  let kind: String?
 }

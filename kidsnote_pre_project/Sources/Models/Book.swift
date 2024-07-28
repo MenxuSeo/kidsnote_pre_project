@@ -8,7 +8,7 @@
 import Foundation
 
 struct Book: Identifiable, Codable {
-  let id: String?
+  let id: String
   let volumeInfo: VolumeInfo?
   
   var title: String? { volumeInfo?.title }

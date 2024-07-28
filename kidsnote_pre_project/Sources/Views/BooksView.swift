@@ -12,26 +12,22 @@ struct BooksView: View {
   
   @State var searchText: String = "1"
   var body: some View {
-    List(viewModel.books) { book in
-      HStack {
-        if let thumbnail = book.thumbnail {
-          AsyncImage(url: thumbnail) { image in
-            image.resizable()
-          } placeholder: {
-            ProgressView()
+    NavigationStack {
+      List(viewModel.books) { book in
+        NavigationLink(destination: BookView(book: book)) {
+          HStack {
+            CachedAsyncImage(url: book.thumbnail)
+              .frame(width: 50, height: 70)
+            VStack(alignment: .leading) {
+              Text(book.title ?? "")
+              Text((book.authors?.joined(separator: ", ")) ?? "")
+              Text("eBook")
+            }
           }
-          .frame(width: 30, height: 70)
         }
-        VStack(alignment: .leading) {
-          Text(book.title ?? "")
-          Text((book.authors?.joined(separator: ", ")) ?? "")
-          Text("eBook")
-        }
-        
       }
     }
-    .background(Color.blue)
-    .onTapGesture {
+    .onAppear {
       viewModel.searchBooks(query: searchText)
       print("viewModel.books: \(viewModel.books.count)")
     }

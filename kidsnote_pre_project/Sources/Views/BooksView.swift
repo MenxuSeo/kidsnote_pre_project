@@ -8,10 +8,22 @@
 import SwiftUI
 
 struct BooksView: View {
+  enum BookType: String, CaseIterable {
+    case eBook
+    case 오디오북
+  }
   @ObservedObject var viewModel = BooksViewModel()
+  @State var selectedBookType: BookType = .eBook
   
   var body: some View {
     NavigationStack {
+      Picker("ㅒㅔ샤ㅐㅜㄴ", selection: $selectedBookType) {
+        ForEach(BookType.allCases, id: \.self) { bookType in
+          Text(bookType.rawValue)
+        }
+      }
+      .pickerStyle(.segmented)
+      .padding(.horizontal)
       List(viewModel.books) { book in
         NavigationLink(destination: BookView(book: book)) {
           HStack {
@@ -25,6 +37,7 @@ struct BooksView: View {
           }
         }
       }
+      .listStyle(.plain)
     }
     .onAppear {
       viewModel.searchBooks(query: viewModel.searchText)

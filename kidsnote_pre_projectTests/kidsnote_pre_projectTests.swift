@@ -1,5 +1,5 @@
 //
-//  BookTests.swift
+//  kidsnote_pre_projectTests.swift
 //  kidsnote_pre_projectTests
 //
 //  Created by seo on 28/7/24.
@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class BookTests: XCTestCase {
+final class kidsnote_pre_projectTests: XCTestCase {
   
   func testBooksDecodable() {
     //given

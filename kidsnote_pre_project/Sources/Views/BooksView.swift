@@ -10,7 +10,6 @@ import SwiftUI
 struct BooksView: View {
   @ObservedObject var viewModel = BooksViewModel()
   
-  @State var searchText: String = "1"
   var body: some View {
     NavigationStack {
       List(viewModel.books) { book in
@@ -28,13 +27,13 @@ struct BooksView: View {
       }
     }
     .onAppear {
-      viewModel.searchBooks(query: searchText)
+      viewModel.searchBooks(query: viewModel.searchText)
       print("viewModel.books: \(viewModel.books.count)")
     }
-    .searchable(text: $searchText)
+    .searchable(text: $viewModel.searchText)
   }
 }
 
 #Preview {
-  BooksView(searchText: "아이폰")
+  BooksView()
 }

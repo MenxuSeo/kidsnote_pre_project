@@ -1,0 +1,101 @@
+//
+//  BooksView.swift
+//  kidsnote_pre_project
+//
+//  Created by seo on 26/7/24.
+//
+
+import SwiftUI
+
+
+
+struct BooksView: View {
+  private enum FocusField: Hashable {
+    case searchBar
+  }
+  
+  @ObservedObject var viewModel = BooksViewModel()
+  @State var selectedBookType: BookType = .eBook
+  @FocusState private var focusedField: FocusField?
+  
+  var body: some View {
+    NavigationStack {
+      VStack(spacing: 14) {
+        SearchBar(text: $viewModel.searchText)
+          .focused($focusedField, equals: .searchBar)
+        Divider()
+          .onAppear {
+            focusedField = .searchBar
+          }
+        if viewModel.searchText.isNotEmpty {
+          VStack(spacing: 2) {
+            KNPicker(selectedBookType: $selectedBookType)
+            Divider()
+          }
+//          Picker("segmented", selection: $selectedBookType) {
+//            ForEach(BookType.allCases, id: \.self) { bookType in
+//              Text(bookType.rawValue)
+//            }
+//          }
+//          .pickerStyle(.segmented)
+        }
+        
+        if selectedBookType == .eBook {
+          ebookView
+        } else {
+          Spacer()
+          Text("🛠️ 공사중")
+          Spacer()
+        }
+      }
+      
+    }
+  }
+  
+  var ebookView: some View {
+    VStack(alignment: .leading) {
+      List(viewModel.books) { book in
+        ZStack {
+          NavigationLink(destination: BookView(book)) {}
+            .opacity(0)
+          HStack(alignment: .top, spacing: 16) {
+            CachedAsyncImage(url: book.thumbnail)
+              .frame(width: 100, height: 140)
+              .cornerRadius(8)
+              .shadow(radius: 8)
+            VStack(alignment: .leading) {
+              Text(book.title)
+                .font(.subheadline)
+                .lineLimit(2)
+              Text((book.authors.joined(separator: ", ")))
+                .font(.caption)
+                .foregroundStyle(Color.gray)
+              Text("eBook")
+                .font(.caption)
+                .foregroundStyle(Color.gray)
+            }
+            .lineLimit(1)
+            .onAppear {
+              if book == viewModel.books.last {
+                viewModel.requestLoadMoreBooks()
+              }
+            }
+            Spacer()
+          }
+        }
+        .listRowSeparator(.hidden)
+      }
+      
+      .listStyle(.plain)
+      .padding(0)
+      if viewModel.isLoading {
+        ProgressView()
+      }
+    }
+  }
+  
+}
+
+#Preview {
+  BooksView()
+}

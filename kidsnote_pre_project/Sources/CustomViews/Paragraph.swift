@@ -46,7 +46,7 @@ struct Paragraph<V: View>: View {
           
           if let rightSymbol = rightSFSymbol {
             SFSymbol(type: rightSymbol)
-              .foregroundColor(.blue)
+              .foregroundColor(.knBlue)
           }
         }
         
@@ -54,7 +54,7 @@ struct Paragraph<V: View>: View {
           Text(bodyText)
             .font(.subheadline)
             .multilineTextAlignment(.leading)
-            .foregroundColor(.gray)
+            .foregroundColor(Color.secondary)
             .lineLimit(4)
         }
         
@@ -68,7 +68,7 @@ struct Paragraph<V: View>: View {
   //      .opacity(destination == nil ? 0 : 1)
       )
     })
-    .foregroundColor(.black)
+    .foregroundColor(.primary)
   }
   
   @ViewBuilder

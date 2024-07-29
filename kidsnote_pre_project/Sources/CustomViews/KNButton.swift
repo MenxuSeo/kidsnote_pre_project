@@ -19,7 +19,7 @@ struct KNButton: View {
   
   private let foregroundColor: Color
   private let backgroundColor: Color
-  private let borderColor: Color = .blue
+  private let borderColor: Color = .knBlue
   
   init(
     _ title: String,
@@ -31,11 +31,11 @@ struct KNButton: View {
     self.action = action
     
     if filledStyle == .empty {
-      foregroundColor = Color.blue
-      backgroundColor = Color.white
+      foregroundColor = Color.knBlue
+      backgroundColor = Color.knBackground
     } else {
-      foregroundColor = Color.white
-      backgroundColor = Color.blue
+      foregroundColor = Color.knBackground
+      backgroundColor = Color.knBlue
     }
   }
   

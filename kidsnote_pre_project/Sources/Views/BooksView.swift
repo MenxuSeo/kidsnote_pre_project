@@ -20,35 +20,39 @@ struct BooksView: View {
   
   var body: some View {
     NavigationStack {
-      VStack(spacing: 14) {
-        SearchBar(text: $viewModel.searchText)
-          .focused($focusedField, equals: .searchBar)
-        Divider()
-          .onAppear {
-            focusedField = .searchBar
+      ZStack {
+        VStack(spacing: 14) {
+          SearchBar(text: $viewModel.searchText)
+            .focused($focusedField, equals: .searchBar)
+          Divider()
+            .onAppear {
+              focusedField = .searchBar
+            }
+          if viewModel.searchText.isNotEmpty {
+            VStack(alignment: .leading, spacing: 2) {
+              KNPicker(selectedBookType: $selectedBookType)
+              Divider()
+              Text("Google Play 검색결과")
+                .font(.title2)
+                .padding(.top, 16)
+                .padding(.horizontal, 16)
+            }
           }
-        if viewModel.searchText.isNotEmpty {
-          VStack(spacing: 2) {
-            KNPicker(selectedBookType: $selectedBookType)
-            Divider()
+          
+          if selectedBookType == .eBook {
+            ebookView
+          } else {
+            Spacer()
+            Text("🛠️ 공사중")
+            Spacer()
           }
-//          Picker("segmented", selection: $selectedBookType) {
-//            ForEach(BookType.allCases, id: \.self) { bookType in
-//              Text(bookType.rawValue)
-//            }
-//          }
-//          .pickerStyle(.segmented)
         }
-        
-        if selectedBookType == .eBook {
-          ebookView
-        } else {
-          Spacer()
-          Text("🛠️ 공사중")
-          Spacer()
+        if viewModel.isLoading {
+          ProgressView()
+            .frame(alignment: .center)
+            .padding(40)
         }
       }
-      
     }
   }
   
@@ -69,10 +73,10 @@ struct BooksView: View {
                 .lineLimit(2)
               Text((book.authors.joined(separator: ", ")))
                 .font(.caption)
-                .foregroundStyle(Color.gray)
+                .foregroundStyle(Color.secondary)
               Text("eBook")
                 .font(.caption)
-                .foregroundStyle(Color.gray)
+                .foregroundStyle(Color.secondary)
             }
             .lineLimit(1)
             .onAppear {
@@ -85,11 +89,17 @@ struct BooksView: View {
         }
         .listRowSeparator(.hidden)
       }
-      
       .listStyle(.plain)
       .padding(0)
-      if viewModel.isLoading {
-        ProgressView()
+      
+      if !viewModel.books.isEmpty, viewModel.isLoading {
+        HStack {
+          Spacer()
+          ProgressView()
+            .frame(alignment: .center)
+          Spacer()
+        }
+        
       }
     }
   }

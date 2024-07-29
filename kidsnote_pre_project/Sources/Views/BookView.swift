@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BookView: View {
+  @State private var isShareSheetPresented = false
   let book: Book
   var body: some View {
     ScrollView {
@@ -37,8 +38,15 @@ struct BookView: View {
           .lineLimit(1)
           .minimumScaleFactor(0.1)
         Divider()
-        Paragraph<Text>("eBook 정보", bodyText: book.volumeInfo?.description)
-        Paragraph("평점 및 리뷰") {
+        Paragraph<Text>(
+          "eBook 정보",
+          bodyText: book.volumeInfo?.description,
+          rightSymbol: .more
+        )
+        Paragraph(
+          "평점 및 리뷰",
+          rightSymbol: .more
+        ) {
           HStack {
             VStack(alignment: .leading) {
               Text("3.7")
@@ -50,6 +58,20 @@ struct BookView: View {
       }
     }
     .padding()
+    .toolbar {
+      ToolbarItem {
+        SFSymbol(type: .share)
+          .foregroundColor(.blue)
+          .onTapGesture {
+            isShareSheetPresented = true
+          }
+      }
+    }
+  
+    .sheet(isPresented: $isShareSheetPresented) {
+      let bookLink = book.volumeInfo?.infoLink ?? "books.google.com"
+      return ShareSheet(items: ["공유하기", URL(string: bookLink)!])
+    }
   }
 }
 

@@ -11,6 +11,7 @@ enum SFSymbolType: String {
   case share = "square.and.arrow.up"
   case more = "chevron.right"
   case x = "xmark"
+  case bookmark = "bookmark"
 }
 
 struct SFSymbol: View {

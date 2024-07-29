@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BookView: View {
   @State private var isShareSheetPresented = false
+  @State private var isWebViewSheetPresented = false
   let book: Book
   var body: some View {
     ScrollView {
@@ -28,7 +29,7 @@ struct BookView: View {
         Divider()
         HStack {
           KNButton("읽음", filledStyle: .empty) {
-            
+            isWebViewSheetPresented = true
           }
           KNButton("위시리스트에 추가", filledStyle: .filled) {
             
@@ -56,6 +57,7 @@ struct BookView: View {
         }
         Paragraph<Text>("게시일", bodyText: "\(book.publishedDate ?? "") - \(book.volumeInfo?.publisher ?? "")")
       }
+      .background(Color.red)
     }
     .padding()
     .toolbar {
@@ -67,7 +69,9 @@ struct BookView: View {
           }
       }
     }
-  
+    .fullScreenCover(isPresented: $isWebViewSheetPresented) {
+      WebView(webView: .init(url: book.volumeInfo?.previewLink.toURL)) {}
+    }
     .sheet(isPresented: $isShareSheetPresented) {
       let bookLink = book.volumeInfo?.infoLink ?? "books.google.com"
       return ShareSheet(items: ["공유하기", URL(string: bookLink)!])

@@ -30,6 +30,7 @@ struct VolumeInfo: Codable {
   let imageLinks: ImageLinks?
   let language: String?
   let infoLink: String?
+  let previewLink: String?
   let canonicalVolumeLink: String?
 }
 

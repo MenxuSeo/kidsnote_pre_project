@@ -31,6 +31,9 @@
 		AACE5A2E2C568C1300106E35 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE5A2D2C568C1300106E35 /* Date+.swift */; };
 		AACE5A302C568DC600106E35 /* KNButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE5A2F2C568DC600106E35 /* KNButton.swift */; };
 		AACE5A322C56930200106E35 /* Paragraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE5A312C56930200106E35 /* Paragraph.swift */; };
+		AACE5A342C573A2700106E35 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE5A332C573A2700106E35 /* ShareSheet.swift */; };
+		AACE5A362C573B5300106E35 /* SFSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE5A352C573B5300106E35 /* SFSymbol.swift */; };
+		AACE5A382C57401200106E35 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE5A372C57401200106E35 /* WebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +79,9 @@
 		AACE5A2D2C568C1300106E35 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		AACE5A2F2C568DC600106E35 /* KNButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNButton.swift; sourceTree = "<group>"; };
 		AACE5A312C56930200106E35 /* Paragraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paragraph.swift; sourceTree = "<group>"; };
+		AACE5A332C573A2700106E35 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		AACE5A352C573B5300106E35 /* SFSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbol.swift; sourceTree = "<group>"; };
+		AACE5A372C57401200106E35 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,7 +184,10 @@
 			isa = PBXGroup;
 			children = (
 				AACE5A0B2C56719800106E35 /* CachedAsyncImage.swift */,
+				AACE5A372C57401200106E35 /* WebView.swift */,
+				AACE5A332C573A2700106E35 /* ShareSheet.swift */,
 				AACE5A312C56930200106E35 /* Paragraph.swift */,
+				AACE5A352C573B5300106E35 /* SFSymbol.swift */,
 				AACE5A2F2C568DC600106E35 /* KNButton.swift */,
 			);
 			path = CustomViews;
@@ -365,13 +374,16 @@
 				AACE5A172C56720B00106E35 /* Book.swift in Sources */,
 				AACE5A262C56726A00106E35 /* BooksViewModel.swift in Sources */,
 				AACE5A222C56725F00106E35 /* BookView.swift in Sources */,
+				AACE5A342C573A2700106E35 /* ShareSheet.swift in Sources */,
 				AACE5A1E2C56723E00106E35 /* APIError.swift in Sources */,
 				AACE5A132C5671D700106E35 /* Image+.swift in Sources */,
 				AACE5A0C2C56719800106E35 /* CachedAsyncImage.swift in Sources */,
+				AACE5A362C573B5300106E35 /* SFSymbol.swift in Sources */,
 				AACE5A2E2C568C1300106E35 /* Date+.swift in Sources */,
 				AACE5A322C56930200106E35 /* Paragraph.swift in Sources */,
 				AACE5A152C5671F500106E35 /* String+.swift in Sources */,
 				AACE59DF2C56711C00106E35 /* kidsnote_pre_projectApp.swift in Sources */,
+				AACE5A382C57401200106E35 /* WebView.swift in Sources */,
 				AACE5A192C56721A00106E35 /* VolumeInfo.swift in Sources */,
 				AACE5A302C568DC600106E35 /* KNButton.swift in Sources */,
 				AACE5A242C56726400106E35 /* BooksView.swift in Sources */,

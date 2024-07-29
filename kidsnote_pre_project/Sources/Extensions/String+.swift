@@ -10,3 +10,11 @@ import Foundation
 extension String {
   var isNotEmpty: Bool { !isEmpty }
 }
+
+
+extension Optional where Wrapped == String {
+  var toURL: URL? {
+    guard let string = self else { return URL(string: "books.google.com") }
+    return URL(string: string)
+  }
+}

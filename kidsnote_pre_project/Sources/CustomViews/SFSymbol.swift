@@ -10,6 +10,7 @@ import SwiftUI
 enum SFSymbolType: String {
   case share = "square.and.arrow.up"
   case more = "chevron.right"
+  case x = "xmark"
 }
 
 struct SFSymbol: View {

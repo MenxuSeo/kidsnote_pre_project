@@ -35,7 +35,14 @@
 		AACE5A362C573B5300106E35 /* SFSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE5A352C573B5300106E35 /* SFSymbol.swift */; };
 		AACE5A382C57401200106E35 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE5A372C57401200106E35 /* WebView.swift */; };
 		AACE5A402C5762C300106E35 /* WishlistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE5A3F2C5762C300106E35 /* WishlistViewModel.swift */; };
+		AACE5A442C57660D00106E35 /* TextIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE5A432C57660D00106E35 /* TextIcon.swift */; };
 		AACE5A462C577F3E00106E35 /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE5A452C577F3E00106E35 /* BookViewModel.swift */; };
+		AACE5A482C57BA4100106E35 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE5A472C57BA4100106E35 /* SearchBar.swift */; };
+		AACE5A4A2C57C24000106E35 /* KNPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE5A492C57C24000106E35 /* KNPicker.swift */; };
+		AACE5A4C2C57C42F00106E35 /* KNDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE5A4B2C57C42F00106E35 /* KNDivider.swift */; };
+		AACE5A4E2C57C57A00106E35 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE5A4D2C57C57A00106E35 /* RoundedCorner.swift */; };
+		AACE5A502C57C85B00106E35 /* NavigationLink+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE5A4F2C57C85B00106E35 /* NavigationLink+.swift */; };
+		AACE5A522C57CC4D00106E35 /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE5A512C57CC4D00106E35 /* BookDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,7 +92,14 @@
 		AACE5A352C573B5300106E35 /* SFSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbol.swift; sourceTree = "<group>"; };
 		AACE5A372C57401200106E35 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		AACE5A3F2C5762C300106E35 /* WishlistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewModel.swift; sourceTree = "<group>"; };
+		AACE5A432C57660D00106E35 /* TextIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextIcon.swift; sourceTree = "<group>"; };
 		AACE5A452C577F3E00106E35 /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
+		AACE5A472C57BA4100106E35 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		AACE5A492C57C24000106E35 /* KNPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNPicker.swift; sourceTree = "<group>"; };
+		AACE5A4B2C57C42F00106E35 /* KNDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KNDivider.swift; sourceTree = "<group>"; };
+		AACE5A4D2C57C57A00106E35 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		AACE5A4F2C57C85B00106E35 /* NavigationLink+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationLink+.swift"; sourceTree = "<group>"; };
+		AACE5A512C57CC4D00106E35 /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +202,11 @@
 			isa = PBXGroup;
 			children = (
 				AACE5A0B2C56719800106E35 /* CachedAsyncImage.swift */,
+				AACE5A472C57BA4100106E35 /* SearchBar.swift */,
+				AACE5A492C57C24000106E35 /* KNPicker.swift */,
+				AACE5A4D2C57C57A00106E35 /* RoundedCorner.swift */,
+				AACE5A4B2C57C42F00106E35 /* KNDivider.swift */,
+				AACE5A432C57660D00106E35 /* TextIcon.swift */,
 				AACE5A372C57401200106E35 /* WebView.swift */,
 				AACE5A332C573A2700106E35 /* ShareSheet.swift */,
 				AACE5A312C56930200106E35 /* Paragraph.swift */,
@@ -204,6 +223,7 @@
 				AACE5A252C56726A00106E35 /* BooksViewModel.swift */,
 				AACE5A212C56725F00106E35 /* BookView.swift */,
 				AACE5A452C577F3E00106E35 /* BookViewModel.swift */,
+				AACE5A512C57CC4D00106E35 /* BookDetailView.swift */,
 				AACE5A3F2C5762C300106E35 /* WishlistViewModel.swift */,
 			);
 			path = Views;
@@ -223,6 +243,7 @@
 			children = (
 				AACE5A122C5671D700106E35 /* Image+.swift */,
 				AACE5A2D2C568C1300106E35 /* Date+.swift */,
+				AACE5A4F2C57C85B00106E35 /* NavigationLink+.swift */,
 				AACE5A142C5671F500106E35 /* String+.swift */,
 			);
 			path = Extensions;
@@ -380,10 +401,13 @@
 				AACE5A172C56720B00106E35 /* Book.swift in Sources */,
 				AACE5A262C56726A00106E35 /* BooksViewModel.swift in Sources */,
 				AACE5A222C56725F00106E35 /* BookView.swift in Sources */,
+				AACE5A4E2C57C57A00106E35 /* RoundedCorner.swift in Sources */,
 				AACE5A342C573A2700106E35 /* ShareSheet.swift in Sources */,
 				AACE5A462C577F3E00106E35 /* BookViewModel.swift in Sources */,
 				AACE5A402C5762C300106E35 /* WishlistViewModel.swift in Sources */,
 				AACE5A1E2C56723E00106E35 /* APIError.swift in Sources */,
+				AACE5A442C57660D00106E35 /* TextIcon.swift in Sources */,
+				AACE5A4C2C57C42F00106E35 /* KNDivider.swift in Sources */,
 				AACE5A132C5671D700106E35 /* Image+.swift in Sources */,
 				AACE5A0C2C56719800106E35 /* CachedAsyncImage.swift in Sources */,
 				AACE5A362C573B5300106E35 /* SFSymbol.swift in Sources */,
@@ -391,9 +415,13 @@
 				AACE5A322C56930200106E35 /* Paragraph.swift in Sources */,
 				AACE5A152C5671F500106E35 /* String+.swift in Sources */,
 				AACE59DF2C56711C00106E35 /* kidsnote_pre_projectApp.swift in Sources */,
+				AACE5A4A2C57C24000106E35 /* KNPicker.swift in Sources */,
+				AACE5A482C57BA4100106E35 /* SearchBar.swift in Sources */,
+				AACE5A522C57CC4D00106E35 /* BookDetailView.swift in Sources */,
 				AACE5A382C57401200106E35 /* WebView.swift in Sources */,
 				AACE5A192C56721A00106E35 /* VolumeInfo.swift in Sources */,
 				AACE5A302C568DC600106E35 /* KNButton.swift in Sources */,
+				AACE5A502C57C85B00106E35 /* NavigationLink+.swift in Sources */,
 				AACE5A242C56726400106E35 /* BooksView.swift in Sources */,
 				AACE5A202C56725100106E35 /* ImageCache.swift in Sources */,
 				AACE5A1C2C56723000106E35 /* APIClient.swift in Sources */,

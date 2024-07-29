@@ -7,26 +7,39 @@
 
 import SwiftUI
 
+
+
 struct BooksView: View {
-  enum BookType: String, CaseIterable {
-    case eBook
-    case 오디오북
+  private enum FocusField: Hashable {
+    case searchBar
   }
+  
   @ObservedObject var viewModel = BooksViewModel()
   @State var selectedBookType: BookType = .eBook
+  @FocusState private var focusedField: FocusField?
   
   var body: some View {
     NavigationStack {
-      Picker("segmented", selection: $selectedBookType) {
-        ForEach(BookType.allCases, id: \.self) { bookType in
-          Text(bookType.rawValue)
+      VStack(spacing: 14) {
+        SearchBar(text: $viewModel.searchText)
+          .focused($focusedField, equals: .searchBar)
+        Divider()
+          .onAppear {
+            focusedField = .searchBar
+          }
+        if viewModel.searchText.isNotEmpty {
+          VStack(spacing: 2) {
+            KNPicker(selectedBookType: $selectedBookType)
+            Divider()
+          }
+//          Picker("segmented", selection: $selectedBookType) {
+//            ForEach(BookType.allCases, id: \.self) { bookType in
+//              Text(bookType.rawValue)
+//            }
+//          }
+//          .pickerStyle(.segmented)
         }
-      }
-      .pickerStyle(.segmented)
-      .padding(.horizontal)
-      .searchable(text: $viewModel.searchText)
-      
-      VStack {
+        
         if selectedBookType == .eBook {
           ebookView
         } else {
@@ -34,8 +47,8 @@ struct BooksView: View {
           Text("🛠️ 공사중")
           Spacer()
         }
-        
       }
+      
     }
   }
   
@@ -44,7 +57,7 @@ struct BooksView: View {
       List(viewModel.books) { book in
         ZStack {
           NavigationLink(destination: BookView(book)) {}
-          .opacity(0)
+            .opacity(0)
           HStack(alignment: .top, spacing: 16) {
             CachedAsyncImage(url: book.thumbnail)
               .frame(width: 100, height: 140)
@@ -80,7 +93,7 @@ struct BooksView: View {
       }
     }
   }
-    
+  
 }
 
 #Preview {

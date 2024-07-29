@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Book: Codable, Identifiable {
+struct Book: Codable, Identifiable, Equatable {
   let id: String
   let title: String
   let thumbnail: URL?
@@ -20,6 +20,10 @@ struct Book: Codable, Identifiable {
   let averageRating: Double
   let ratingsCount: Int
   let infoLink: String
+  
+  static func ==(lhs: Book, rhs: Book) -> Bool {
+    return lhs.id == rhs.id
+  }
 }
 
 

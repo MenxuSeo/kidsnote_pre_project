@@ -9,6 +9,7 @@ import Foundation
 
 enum APIError: Error {
   case decodingError
+  case queryError
   case urlError
   case httpError(Int)
   case unknown

@@ -18,8 +18,8 @@ class BookViewModel: ObservableObject {
     self.book = book
   }
   
-  func searchBook() {
-    apiClient.searchBook(id: book.id)
+  func requestBook() {
+    apiClient.book(id: book.id)
       .receive(on: DispatchQueue.main)
       .sink(receiveCompletion: { completion in
         guard case .finished = completion else { return }

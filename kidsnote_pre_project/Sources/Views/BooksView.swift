@@ -17,7 +17,7 @@ struct BooksView: View {
   
   var body: some View {
     NavigationStack {
-      Picker("ㅒㅔ샤ㅐㅜㄴ", selection: $selectedBookType) {
+      Picker("segmented", selection: $selectedBookType) {
         ForEach(BookType.allCases, id: \.self) { bookType in
           Text(bookType.rawValue)
         }
@@ -34,14 +34,21 @@ struct BooksView: View {
               Text((book.authors.joined(separator: ", ")))
               Text("eBook")
             }
+            .onAppear {
+              if book == viewModel.books.last {
+                viewModel.requestLoadMoreBooks()
+              }
+              
+            }
           }
         }
+        
       }
       .listStyle(.plain)
       .padding(0)
     }
     .onAppear {
-      viewModel.searchBooks(query: viewModel.searchText)
+      viewModel.requestBooks(query: viewModel.searchText)
       print("viewModel.books: \(viewModel.books.count)")
     }
     .searchable(text: $viewModel.searchText)

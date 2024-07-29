@@ -50,7 +50,7 @@ struct BookView: View {
       }
     }
     .onAppear {
-      viewModel.searchBook()
+      viewModel.requestBook()
     }
     .padding()
     .toolbar {

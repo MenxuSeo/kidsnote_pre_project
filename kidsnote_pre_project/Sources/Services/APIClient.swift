@@ -12,9 +12,26 @@ final class APIClient {
   private let baseURL = "https://www.googleapis.com/books/v1/volumes"
   private let apiKey = ""
   
-  func searchBooks(query: String) -> AnyPublisher<[BookResponse], APIError> {
-    guard let url = URL(string: "\(baseURL)?q=\(query)&key=\(apiKey)") else {
+  func books(
+    query: String,
+    page _page: Int,
+    size _size: Int
+  ) -> AnyPublisher<[BookResponse], APIError> {
+    guard var urlComponents = URLComponents(string: baseURL) else {
       return Fail(error: APIError.urlError).eraseToAnyPublisher()
+    }
+    
+    let page = max(0, _page)
+    let size = min(40, max(10, _size))
+    
+    urlComponents.queryItems = [
+      URLQueryItem(name: "q", value: query),
+      URLQueryItem(name: "startIndex", value: "\(page * size)"),
+      URLQueryItem(name: "key", value: apiKey),
+    ]
+    
+    guard let url = urlComponents.url else {
+      return Fail(error: APIError.queryError).eraseToAnyPublisher()
     }
     
     return URLSession.shared.dataTaskPublisher(for: url)
@@ -36,7 +53,7 @@ final class APIClient {
       .eraseToAnyPublisher()
   }
   
-  func searchBook(id: String) -> AnyPublisher<BookResponse, APIError> {
+  func book(id: String) -> AnyPublisher<BookResponse, APIError> {
     guard let url = URL(string: "\(baseURL)/\(id)?key=\(apiKey)") else {
       return Fail(error: APIError.urlError).eraseToAnyPublisher()
     }

@@ -9,57 +9,72 @@ import SwiftUI
 import WebKit
 
 struct WebView<Content> where Content: View  {
+  
+  enum WebViewType {
+    case navigation
+    case sheet
+  }
+  
   @Environment(\.dismiss) private var dismiss
   @State private var isLoading = false
   
   var title: String
+  var webViewType: WebViewType
   var webView: WebViewController
   var content: Content
   
   init(
     _ title: String = "",
     webView: WebViewController,
+    webViewType: WebViewType = .sheet,
     @ViewBuilder content: @escaping () -> Content
   ) {
     self.title = title
     self.webView = webView
+    self.webViewType = webViewType
     self.content = content()
   }
 }
 
 extension WebView: View {
-  var backButton: some View {
-    Button(action: {
-      dismiss()
-    }) {
-      Image(systemName: "chevron.backward")
-    }
-  }
   var body: some View {
     ZStack {
       NavigationView {
-        VStack {
-          webView
-            .padding(16)
-          content
+        if webViewType == .sheet {   
+          bodyView
+            .navigationBarItems(
+              leading:
+                SFSymbol(type: .x)
+                .onTapGesture {
+                  dismiss()
+                }
+            )
+          
+        } else {
+          bodyView
         }
-        .navigationTitle(title)
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackButtonHidden()
-        .navigationBarItems(
-          leading:
-            SFSymbol(type: .x)
-            .onTapGesture {
-              dismiss()
-            })
       }
     }
+  }
+  
+  var bodyView: some View {
+    VStack {
+      webView
+        .padding(16)
+      content
+    }
+    .navigationTitle(title)
+    .navigationBarTitleDisplayMode(.inline)
+    .navigationBarBackButtonHidden()
+    
   }
 }
 
 
 struct WebViewController: UIViewRepresentable {
   var url: URL?
+  var htmlString: String?
+  
   @State var isLoading = true
   
   func makeCoordinator() -> Coordinator {
@@ -81,6 +96,8 @@ struct WebViewController: UIViewRepresentable {
     
     if let url = url {
       webView.load(URLRequest(url: url))
+    } else if let htmlString = htmlString {
+      webView.loadHTMLString(htmlString, baseURL: nil)
     }
     
     webView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)

@@ -25,19 +25,20 @@ struct BooksView: View {
       .pickerStyle(.segmented)
       .padding(.horizontal)
       List(viewModel.books) { book in
-        NavigationLink(destination: BookView(book: book)) {
+        NavigationLink(destination: BookView(book)) {
           HStack {
             CachedAsyncImage(url: book.thumbnail)
               .frame(width: 50, height: 70)
             VStack(alignment: .leading) {
-              Text(book.title ?? "")
-              Text((book.authors?.joined(separator: ", ")) ?? "")
+              Text(book.title)
+              Text((book.authors.joined(separator: ", ")))
               Text("eBook")
             }
           }
         }
       }
       .listStyle(.plain)
+      .padding(0)
     }
     .onAppear {
       viewModel.searchBooks(query: viewModel.searchText)

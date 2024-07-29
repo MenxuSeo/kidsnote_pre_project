@@ -9,8 +9,8 @@ import Foundation
 
 extension String {
   var isNotEmpty: Bool { !isEmpty }
+  var toURL: URL? { URL(string: self)}
 }
-
 
 extension Optional where Wrapped == String {
   var toURL: URL? {

@@ -35,6 +35,7 @@
 		AACE5A362C573B5300106E35 /* SFSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE5A352C573B5300106E35 /* SFSymbol.swift */; };
 		AACE5A382C57401200106E35 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE5A372C57401200106E35 /* WebView.swift */; };
 		AACE5A402C5762C300106E35 /* WishlistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE5A3F2C5762C300106E35 /* WishlistViewModel.swift */; };
+		AACE5A462C577F3E00106E35 /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACE5A452C577F3E00106E35 /* BookViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		AACE5A352C573B5300106E35 /* SFSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbol.swift; sourceTree = "<group>"; };
 		AACE5A372C57401200106E35 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		AACE5A3F2C5762C300106E35 /* WishlistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewModel.swift; sourceTree = "<group>"; };
+		AACE5A452C577F3E00106E35 /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,7 @@
 				AACE5A232C56726400106E35 /* BooksView.swift */,
 				AACE5A252C56726A00106E35 /* BooksViewModel.swift */,
 				AACE5A212C56725F00106E35 /* BookView.swift */,
+				AACE5A452C577F3E00106E35 /* BookViewModel.swift */,
 				AACE5A3F2C5762C300106E35 /* WishlistViewModel.swift */,
 			);
 			path = Views;
@@ -378,6 +381,7 @@
 				AACE5A262C56726A00106E35 /* BooksViewModel.swift in Sources */,
 				AACE5A222C56725F00106E35 /* BookView.swift in Sources */,
 				AACE5A342C573A2700106E35 /* ShareSheet.swift in Sources */,
+				AACE5A462C577F3E00106E35 /* BookViewModel.swift in Sources */,
 				AACE5A402C5762C300106E35 /* WishlistViewModel.swift in Sources */,
 				AACE5A1E2C56723E00106E35 /* APIError.swift in Sources */,
 				AACE5A132C5671D700106E35 /* Image+.swift in Sources */,

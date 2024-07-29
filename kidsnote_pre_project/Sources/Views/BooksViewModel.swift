@@ -39,7 +39,7 @@ class BooksViewModel: ObservableObject {
         print("completion: \(completion)")
       }, receiveValue: { books in
         print("books: \(books)")
-        self.books = books
+        self.books = books.map { $0.toDomain() }
 //        dump(self.books)
       })
       .store(in: &cancellables)

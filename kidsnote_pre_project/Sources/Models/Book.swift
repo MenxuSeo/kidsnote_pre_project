@@ -14,7 +14,8 @@ struct Book: Codable, Identifiable, Equatable {
   let authors: [String]
   let publisher: String
   let publishedDate: String
-  let description: String
+  var description: String
+  let htmlDescription: String
   let page: Int
   let isEbook: Bool
   let averageRating: Double
@@ -84,7 +85,7 @@ struct BookResponse: Codable {
 }
 
 extension BookResponse {
-  func toDomain() -> Book {
+  func toDomain(/*isDetail: Bool*/) -> Book {
     return Book(
       id: id ?? "",
       title: volumeInfo?.title ?? "",
@@ -93,6 +94,7 @@ extension BookResponse {
       publisher: volumeInfo?.publisher ?? "",
       publishedDate: volumeInfo?.publishedDate ?? "",
       description: volumeInfo?.description ?? "",
+      htmlDescription: volumeInfo?.description ?? "",
       page: volumeInfo?.pageCount ?? 0,
       isEbook: saleInfo?.isEbook ?? false,
       averageRating: volumeInfo?.averageRating ?? -1,

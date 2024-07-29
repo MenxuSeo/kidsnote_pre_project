@@ -28,10 +28,13 @@ struct BookView: View {
           .lineLimit(1)
           .minimumScaleFactor(0.1)
         Divider()
-        Paragraph<Text>(
+        Paragraph(
           "eBook 정보",
           bodyText: viewModel.book.description,
-          rightSymbol: .more
+          rightSymbol: .more,
+          destination: {
+            BookDetailView(book: viewModel.book)
+          }
         )
         if viewModel.book.averageRating > 0 {
           Paragraph(

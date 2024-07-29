@@ -25,9 +25,10 @@ class BookViewModel: ObservableObject {
         guard case .finished = completion else { return }
       }, receiveValue: { bookDetail in
         guard let _ = bookDetail.id else { return }
-        print(bookDetail.toDomain())
-        self.book = bookDetail.toDomain()
         
+        let tempDescription = self.book.description
+        self.book = bookDetail.toDomain()
+        self.book.description = tempDescription
       })
       .store(in: &cancellables)
   }

@@ -24,35 +24,63 @@ struct BooksView: View {
       }
       .pickerStyle(.segmented)
       .padding(.horizontal)
+      .searchable(text: $viewModel.searchText)
+      
+      VStack {
+        if selectedBookType == .eBook {
+          ebookView
+        } else {
+          Spacer()
+          Text("🛠️ 공사중")
+          Spacer()
+        }
+        
+      }
+    }
+  }
+  
+  var ebookView: some View {
+    VStack(alignment: .leading) {
       List(viewModel.books) { book in
-        NavigationLink(destination: BookView(book)) {
-          HStack {
+        ZStack {
+          NavigationLink(destination: BookView(book)) {}
+          .opacity(0)
+          HStack(alignment: .top, spacing: 16) {
             CachedAsyncImage(url: book.thumbnail)
-              .frame(width: 50, height: 70)
+              .frame(width: 100, height: 140)
+              .cornerRadius(8)
+              .shadow(radius: 8)
             VStack(alignment: .leading) {
               Text(book.title)
+                .font(.subheadline)
+                .lineLimit(2)
               Text((book.authors.joined(separator: ", ")))
+                .font(.caption)
+                .foregroundStyle(Color.gray)
               Text("eBook")
+                .font(.caption)
+                .foregroundStyle(Color.gray)
             }
+            .lineLimit(1)
             .onAppear {
               if book == viewModel.books.last {
                 viewModel.requestLoadMoreBooks()
               }
-              
             }
+            Spacer()
           }
         }
-        
+        .listRowSeparator(.hidden)
       }
+      
       .listStyle(.plain)
       .padding(0)
+      if viewModel.isLoading {
+        ProgressView()
+      }
     }
-    .onAppear {
-      viewModel.requestBooks(query: viewModel.searchText)
-      print("viewModel.books: \(viewModel.books.count)")
-    }
-    .searchable(text: $viewModel.searchText)
   }
+    
 }
 
 #Preview {

@@ -69,10 +69,10 @@ struct BooksView: View {
                 .lineLimit(2)
               Text((book.authors.joined(separator: ", ")))
                 .font(.caption)
-                .foregroundStyle(Color.gray)
+                .foregroundStyle(Color.secondary)
               Text("eBook")
                 .font(.caption)
-                .foregroundStyle(Color.gray)
+                .foregroundStyle(Color.secondary)
             }
             .lineLimit(1)
             .onAppear {

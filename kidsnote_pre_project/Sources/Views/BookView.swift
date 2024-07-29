@@ -59,7 +59,7 @@ struct BookView: View {
     .toolbar {
       ToolbarItem {
         SFSymbol(type: .share)
-          .foregroundColor(.blue)
+          .foregroundColor(.knBlue)
           .onTapGesture {
             isShareSheetPresented = true
           }
@@ -87,9 +87,9 @@ struct BookView: View {
           .minimumScaleFactor(0.4)
         Text(viewModel.book.authors.joined(separator: ", "))
           .font(.subheadline)
-          .foregroundStyle(Color.gray)
+          .foregroundStyle(Color.secondary)
         Text("\(viewModel.book.isEbook ? "eBook" : "오디오북") - \(viewModel.book.page)페이지")
-          .foregroundStyle(Color.gray)
+          .foregroundStyle(Color.secondary)
       }
     }
   }

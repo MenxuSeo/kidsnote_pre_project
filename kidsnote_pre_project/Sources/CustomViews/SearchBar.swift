@@ -23,7 +23,7 @@ struct SearchBar: View {
             text = ""
           }) {
             SFSymbol(type: .x)
-              .foregroundColor(.gray)
+              .foregroundColor(Color.secondary)
           }
         }
       }

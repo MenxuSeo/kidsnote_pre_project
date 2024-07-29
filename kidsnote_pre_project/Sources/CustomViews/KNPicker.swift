@@ -22,14 +22,14 @@ struct KNPicker: View {
           Text(bookType.rawValue)
             .font(.caption)
             .frame(maxWidth: .infinity)
-            .foregroundColor(selectedBookType == bookType ? .blue : .gray)
+            .foregroundColor(selectedBookType == bookType ? .knBlue : Color.secondary)
             Spacer()
           KNDivider(
-            color: selectedBookType == bookType ? Color.blue : Color.clear,
+            color: selectedBookType == bookType ? Color.knBlue : Color.clear,
             width: 40,
             height: 4
           )
-          .topRadius(Color.white, cornerRadius: 20)
+          .topRadius(Color.knBackground, cornerRadius: 20)
         }
         .onTapGesture {
           withAnimation {

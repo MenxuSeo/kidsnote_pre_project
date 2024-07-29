@@ -10,14 +10,14 @@ import SwiftUI
 extension Rectangle {
   func lineDivider() -> some View {
     self
-      .fill(Color.gray)
+      .fill(Color.secondary)
       .frame(height: 1)
       .padding(.horizontal, 20)
       .padding(.top, 2)
       .padding(.bottom, 10)
   }
   
-  func paddingDivider(color: Color = .gray) -> some View {
+  func paddingDivider(color: Color = Color.secondary) -> some View {
     VStack {
       self
         .fill(color)
@@ -32,7 +32,7 @@ struct KNDivider: View {
   private let width: CGFloat
   private let height: CGFloat
   
-  init(color: Color = .gray, width: CGFloat = .infinity, height: CGFloat = 1) {
+  init(color: Color = Color.secondary, width: CGFloat = .infinity, height: CGFloat = 1) {
     self.color = color
     self.width = width
     self.height = height

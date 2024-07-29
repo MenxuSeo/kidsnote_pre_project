@@ -40,7 +40,7 @@ extension WebView: View {
   var body: some View {
     ZStack {
       NavigationView {
-        if webViewType == .sheet {   
+        if webViewType == .sheet {
           bodyView
             .navigationBarItems(
               leading:
@@ -72,6 +72,8 @@ extension WebView: View {
 
 
 struct WebViewController: UIViewRepresentable {
+  @Environment(\.colorScheme) var colorScheme
+  
   var url: URL?
   var htmlString: String?
   
@@ -81,8 +83,7 @@ struct WebViewController: UIViewRepresentable {
     Coordinator(self)
   }
   
-  /// 뷰 초기화
-  func makeUIView(context: Context) -> some UIView {
+  func makeUIView(context: Context) -> WKWebView {
     let preferences = WKPreferences()
     preferences.javaScriptCanOpenWindowsAutomatically = false
     
@@ -105,8 +106,20 @@ struct WebViewController: UIViewRepresentable {
     return webView
   }
   
-  func updateUIView(_ uiView: UIViewType, context: Context) {
+  func updateUIView(_ webView: WKWebView, context: Context) {
+    setBackgroundColor(webView: webView, colorScheme: colorScheme)
+  }
+  
+  private func setBackgroundColor(webView: WKWebView, colorScheme: ColorScheme) {
+    let backgroundColor = colorScheme == .dark ? "black" : "white"
+    let textColor = colorScheme == .dark ? "white" : "black"
     
+    let jsString = """
+          document.body.style.backgroundColor = '\(backgroundColor)';
+          document.body.style.color = '\(textColor)';
+          """
+    
+    webView.evaluateJavaScript(jsString, completionHandler: nil)
   }
   
   class Coordinator: NSObject, WKNavigationDelegate {
@@ -126,6 +139,8 @@ struct WebViewController: UIViewRepresentable {
     
     func webView(_ webview: WKWebView, didFinish: WKNavigation!) {
       parent.isLoading = false
+      parent.setBackgroundColor(webView: webview, colorScheme: parent.colorScheme)
+
     }
   }
 }

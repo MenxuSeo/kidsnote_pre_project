@@ -19,8 +19,8 @@ struct BooksView: View {
   @FocusState private var focusedField: FocusField?
   
   var body: some View {
-    ZStack {
-      NavigationStack {
+    NavigationStack {
+      ZStack {
         VStack(spacing: 14) {
           SearchBar(text: $viewModel.searchText)
             .focused($focusedField, equals: .searchBar)
@@ -35,6 +35,7 @@ struct BooksView: View {
               Text("Google Play 검색결과")
                 .font(.title2)
                 .padding(.top, 16)
+                .padding(.horizontal, 16)
             }
           }
           
@@ -46,12 +47,11 @@ struct BooksView: View {
             Spacer()
           }
         }
-        
-      }
-      if viewModel.isLoading {
-        ProgressView()
-          .frame(alignment: .center)
-          .padding(40)
+        if viewModel.isLoading {
+          ProgressView()
+            .frame(alignment: .center)
+            .padding(40)
+        }
       }
     }
   }
@@ -89,11 +89,17 @@ struct BooksView: View {
         }
         .listRowSeparator(.hidden)
       }
-      
       .listStyle(.plain)
       .padding(0)
-      if viewModel.isLoading {
-        ProgressView()
+      
+      if !viewModel.books.isEmpty, viewModel.isLoading {
+        HStack {
+          Spacer()
+          ProgressView()
+            .frame(alignment: .center)
+          Spacer()
+        }
+        
       }
     }
   }

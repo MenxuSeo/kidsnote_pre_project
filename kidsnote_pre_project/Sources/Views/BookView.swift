@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct BookView: View {
+  @StateObject private var wishlistViewModel = WishlistViewModel()
+  
   @State private var isShareSheetPresented = false
   @State private var isWebViewSheetPresented = false
   let book: Book
@@ -31,9 +33,23 @@ struct BookView: View {
           KNButton("읽음", filledStyle: .empty) {
             isWebViewSheetPresented = true
           }
-          KNButton("위시리스트에 추가", filledStyle: .filled) {
-            
+          if wishlistViewModel.isInWishlist {
+            KNButton("위시리스트에서 삭제", filledStyle: .filled) {
+              wishlistViewModel.removeItem(book)
+              wishlistViewModel.checkItem(book)
+              
+            }
+          } else {
+            KNButton("위시리스트에 추가", filledStyle: .filled) {
+              wishlistViewModel.addItem(book)
+              wishlistViewModel.checkItem(book)
+            }
           }
+          
+        }
+        .onAppear {
+          wishlistViewModel.checkItem(book)
+          print()
         }
         Text("Google Play 웹사이트에서 구매한 책을 이 앱에서 읽을 수 있습니다.")
           .lineLimit(1)
